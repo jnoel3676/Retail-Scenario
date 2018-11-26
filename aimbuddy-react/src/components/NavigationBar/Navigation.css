@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Spicy+Rice');
+@import url('https://fonts.googleapis.com/css?family=Oswald:200');
+
+.wrapper-nav {
+	display: flex;
+	font-family: 'Oswald', sans-serif;
+	flex: 0 0 75px;
+	background-color: #3A3A3A;
+}
+
+
+.title{
+	display: flex;
+	flex: 1;
+	justify-content: center;
+	align-items: center;
+	color: white;
+
+}
+
+.sign-out {
+	display: flex;
+	flex: 1;
+	justify-content: center;
+	align-items: center;
+	color: white;
+}
+
+.account {
+	display: flex;
+	flex: 1;
+	justify-content: center;
+	align-items: center;
+	color: white;
+}
