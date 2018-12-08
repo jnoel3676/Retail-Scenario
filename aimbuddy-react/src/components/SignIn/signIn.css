@@ -1,12 +1,26 @@
 .frame {
-	background: #3A3A3A;
+    background: #3A3A3A;
 }
 
 .whitetest {
-	color: white;
+    color: white;
 }
 
 .offwhite {
-	background: #3A3A3A;
-	color: white;
+    background: #3A3A3A;
+    color: white;
+}
+
+form {
+    box-sizing: content-box;
+    z-index: 1;
+    padding: 0 0 0 0;
+    overflow-x: hidden;
+    text-align: center;
+    float: right;
+    margin: 0 0 0 0;
+    height: 450px;
+    background: #eee;
+    border-radius: 5px;
+    transition-duration: 0.4s;
 }

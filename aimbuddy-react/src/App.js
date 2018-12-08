@@ -1,18 +1,20 @@
 import React, { Component, Fragment } from 'react';
-import SignIn from './components/SignIn/signIn';
-import Register from './components/Register/Register';
-import NavigationBar from './components/NavigationBar/NavigationBar';
+import SignIn from './components/signin/signin';
+import Register from './components/register/register';
+import Header from './components/header/header'
 import { UtilContextProvider } from './context/utilContext';
-import Home from './components/Home/Home';
 import './App.css';
+import Catalog from './components/catalog/catalog';
+import Sidebar from './components/sidebar/sidebar';
 
 class App extends Component {
-  
-	constructor() {
-		super()
-		this.state = {
-			isSignedIn: false,
-			route: 'signIn',
+
+  state = {
+    isSignedIn: false,
+      route: 'signin',
+      sidebarToggled: false,
+      loginToggled: false,
+      registerToggled: false,
       user: {
         id: '',
         name: '',
@@ -20,7 +22,13 @@ class App extends Component {
         entries: 0,
         joined: ''
       }
-		}
+  }
+  
+	constructor() {
+		super();
+    this.handleSidebarClick = this.handleSidebarClick.bind(this);
+    this.handleLogInClick = this.handleLogInClick.bind(this);
+    this.handleRegisterClick = this.handleRegisterClick.bind(this);
 	}
 
   loadUser = (data) => {
@@ -33,6 +41,18 @@ class App extends Component {
     })
   }
 
+  handleSidebarClick() {
+    this.setState({sidebarToggled: !this.state.sidebarToggled});
+  };
+
+  handleLogInClick() {
+    this.setState({loginToggled: !this.state.loginToggled});
+  };
+
+  handleRegisterClick() {
+    this.setState({registerToggled: !this.state.registerToggled});
+  };
+
 	onRouteChange = (route) => {
 		if(route === 'signOut') {
 			this.setState({isSignedIn: false})
@@ -42,29 +62,18 @@ class App extends Component {
 		this.setState({route: route});
 	}
   render() {
-    	const { isSignedIn, route } = this.state;
+    	const { isSignedIn, route, loginToggled, registerToggled, sidebarToggled} = this.state;
       return (
         <UtilContextProvider>  
           <Fragment>
-            <NavigationBar 
-              isSignedIn={isSignedIn} 
-              onRouteChange={this.onRouteChange} 
-              route={route}
-            />
-            { route === 'home'
-      				? <Home 
-                onRouteChangePost={this.onRouteChangePost} 
-                onRouteChange={this.onRouteChange} 
-                />
-            :(
-
-              route === 'register'
-              ?<Register onRouteChange={this.onRouteChange}  loadUser={this.loadUser}/>
-              :<SignIn onRouteChange={this.onRouteChange} loadUser={this.loadUser}/>
-            
-            )
-          }
-      		</Fragment>
+            <Header isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} route={route} 
+            handleSidebarClick={this.handleSidebarClick} handleLogInClick={this.handleLogInClick} 
+            handleRegisterClick={this.handleRegisterClick} />
+            <Sidebar sidebarToggled={sidebarToggled} />
+            <Catalog />
+            <SignIn onRouteChange={this.onRouteChange} loadUser={this.loadUser} loginToggled={loginToggled}/>
+            <Register onRouteChange={this.onRouteChange}  loadUser={this.loadUser} registerToggled={registerToggled} />
+            </Fragment>
         </UtilContextProvider>
     	);
   	};

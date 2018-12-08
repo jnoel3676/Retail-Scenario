@@ -6,7 +6,7 @@ const NavigationBar = ({ onRouteChange, isSignedIn, onRouteChangePost, displayAc
 		return(
 			<div className='wrapper-nav'>
 				<div className = 'title'>
-					<h1>AIM BUDDY</h1>
+					<h1>Groceries</h1>
 				</div>
 				{/* This colum is only for debugging, take off while showing actual app*/}
 				<div className='col2'>
