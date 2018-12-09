@@ -7,12 +7,12 @@ const knex = require('knex');
 const db = knex({
 	client: 'pg',
 	connection: {
-		host: 'aimbuddydb.cvt0y3z6nu9h.us-east-2.rds.amazonaws.com',
-		user: 'aimbuddy',
-		password: 'Aimbuddy7:00',
-		database: 'postgres'
+		host: 'localhost',
+		user: '',
+		password: '',
+		database: 'grocerydb'
 	}
-})
+});
 
 const app = express();
 app.use(bodyParser.json());
@@ -40,7 +40,7 @@ app.post('/signin', (req,res) => {
 		.catch(err => res.status(400).json({
 					'message': 'Wrong credentials'
 				}))
-})
+});
 
 //this is the register route, using transactions.
 app.post('/register', (req,res) => {
@@ -67,8 +67,14 @@ app.post('/register', (req,res) => {
 			.catch(trx.rollback)
 		})
 		.catch(err => res.status(400).json('Unable to register user'))
-})
+});
+
+app.get('/catalog', (res,req) => {
+    const items = db.select('*').from('item');
+
+});
+
 
 app.listen(3000, () => {
 	console.log('app is running on port 3000');
-})
+});

@@ -7,8 +7,7 @@ import Sidebar from './components/sidebar/sidebar';
 import { UtilContextProvider } from './context/utilContext';
 import './App.css';
 
-const API = 'https://hn.algolia.com/api/v1/search?query=';
-const DEFAULT_QUERY = 'redux';
+const API = 'http://localhost:3000/catalog';
 
 
 class App extends Component {

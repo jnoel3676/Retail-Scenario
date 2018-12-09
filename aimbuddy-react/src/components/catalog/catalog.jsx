@@ -54,7 +54,7 @@ class Catalog extends Component {
     render() {
         return (
             <React.Fragment>
-                <ItemList items={data}/>
+                <ItemList items={this.props.items}/>
             </React.Fragment>
         );
     }
