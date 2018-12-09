@@ -46,10 +46,14 @@ class App extends Component {
     };
 
     componentDidMount() {
-        fetch(API + DEFAULT_QUERY)
-            .then(response => response.json())
-            .then(data => this.setState({ items: data.hits }));
+        this.getAllItems();
     }
+
+    getAllItems = () => {
+        fetch(API)
+            .then(response => response.json())
+            .then(data => this.setState({ items: data }));
+    };
 
     handleSidebarClick() {
         this.setState({sidebarToggled: !this.state.sidebarToggled});
