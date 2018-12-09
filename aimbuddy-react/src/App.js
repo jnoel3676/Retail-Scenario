@@ -7,6 +7,10 @@ import Sidebar from './components/sidebar/sidebar';
 import { UtilContextProvider } from './context/utilContext';
 import './App.css';
 
+const API = 'https://hn.algolia.com/api/v1/search?query=';
+const DEFAULT_QUERY = 'redux';
+
+
 class App extends Component {
 
     state = {
@@ -15,6 +19,7 @@ class App extends Component {
         sidebarToggled: false,
         loginToggled: false,
         registerToggled: false,
+        items: [],
         user: {
             id: '',
             name: '',
@@ -41,6 +46,12 @@ class App extends Component {
         })
     };
 
+    componentDidMount() {
+        fetch(API + DEFAULT_QUERY)
+            .then(response => response.json())
+            .then(data => this.setState({ items: data.hits }));
+    }
+
     handleSidebarClick() {
         this.setState({sidebarToggled: !this.state.sidebarToggled});
     };
@@ -63,7 +74,7 @@ class App extends Component {
     };
 
     render() {
-        const { isSignedIn, route, loginToggled, registerToggled, sidebarToggled } = this.state;
+        const { isSignedIn, route, loginToggled, registerToggled, sidebarToggled, items } = this.state;
         return (
             <UtilContextProvider>
                 <Fragment>
@@ -71,7 +82,7 @@ class App extends Component {
                             handleSidebarClick={this.handleSidebarClick} handleLogInClick={this.handleLogInClick}
                             handleRegisterClick={this.handleRegisterClick} />
                     <Sidebar sidebarToggled={sidebarToggled} />
-                    <Catalog />
+                    <Catalog items={items}/>
                     <SignIn onRouteChange={this.onRouteChange} loadUser={this.loadUser} loginToggled={loginToggled}/>
                     <Register onRouteChange={this.onRouteChange}  loadUser={this.loadUser} registerToggled={registerToggled} />
                 </Fragment>
