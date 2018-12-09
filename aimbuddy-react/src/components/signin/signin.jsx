@@ -61,15 +61,13 @@ class SignIn extends Component {
             })
     };
 
-    render(){
-
-        const { onRouteChange } = this.props;
+    render() {
 
         return(
             <UtilContextConsumer>
                 {(utilContext) => (
                     <form onSubmit={(e) => { this.onSubmitSignIn(utilContext, e) }} style={{width: this.showLogin()}}>
-                        <article className="br5 white mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
+                        <article className="br5 white w-100 w-50-m w-25-l mw6 shadow-5 center">
                             <main className="pa4 black frame">
                                 <fieldset id="sign_up" className="ba b--transparent ph0 mh0 whitetest">
                                     <legend className="f4 fw6 ph0 mh0 whitetest">Sign In</legend>
@@ -104,9 +102,6 @@ class SignIn extends Component {
                                         type="submit"
                                         value="Sign in"
                                     />
-                                </div>
-                                <div className="lh-copy mt3 whitetest">
-                                    <p onClick={() => onRouteChange('register')} href="#0" className="whitetest f6 link dim white db">Register</p>
                                 </div>
                             </main>
                         </article>

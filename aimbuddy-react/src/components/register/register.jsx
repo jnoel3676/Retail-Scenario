@@ -48,11 +48,10 @@ class Register extends Component {
     };
 
     render() {
-        const { onRouteChange } = this.props;
 
         return (
             <div className="register-box" style={{width: this.showRegister()}}>
-                <article className="br5 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center" >
+                <article className="br5 ba dark-gray b--black-10 w-100 w-50-m w-25-l mw6 shadow-5 center" >
                     <main className="pa4 black-80">
                         <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
                             <legend className="f4 fw6 ph0 mh0">Register</legend>
@@ -94,9 +93,6 @@ class Register extends Component {
                                 value="Register"
                                 onClick={this.onSubmitRegister}
                             />
-                        </div>
-                        <div className="lh-copy mt3">
-                            <p onClick={() => onRouteChange('signIn')} href="#0" className="f6 link dim black db">Sign In</p>
                         </div>
                     </main>
                 </article>
