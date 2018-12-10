@@ -7,7 +7,7 @@ import Sidebar from './components/sidebar/sidebar';
 import { UtilContextProvider } from './context/utilContext';
 import './App.css';
 
-const API = 'http://localhost:3000/catalog';
+const API = 'http://localhost:3000/';
 
 
 class App extends Component {
@@ -26,7 +26,9 @@ class App extends Component {
             entries: 0,
             joined: '',
             employee_status: false
-        }
+        },
+        shift: '',
+        store_id: ''
     };
 
     constructor() {
@@ -46,7 +48,9 @@ class App extends Component {
                 joined: data.joined,
                 employee_status: data.employee_status
             }
-        })
+        });
+        this.getStoreID();
+        this.getShift();
     };
 
     componentDidMount() {
@@ -54,9 +58,47 @@ class App extends Component {
     }
 
     getAllItems = () => {
-        fetch(API)
+        const query = 'catalog';
+        fetch(API + query)
             .then(response => response.json())
             .then(data => this.setState({ items: data }));
+    };
+
+    getStoreID = () => {
+        const name_array = this.state.user.name.split(' ');
+        const query = 'store-id';
+        if (this.state.isSignedIn && this.state.user.employee_status) {
+            fetch(API + query, {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    name: name_array[1]
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    this.setState({ store_id: data.store_id })
+                })
+        }
+    };
+
+    getShift = () => {
+        const name_array = this.state.user.name.split(' ');
+        const query = 'shift-info';
+        if (this.state.isSignedIn && this.state.user.employee_status) {
+            fetch(API + query, {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    name: name_array[1]
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    this.setState({ shift: data.hours })
+                })
+        }
     };
 
     handleSidebarClick() {
@@ -89,7 +131,8 @@ class App extends Component {
                 <Fragment>
                     <Header isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} route={route}
                             handleSidebarClick={this.handleSidebarClick} handleLogInClick={this.handleLogInClick}
-                            handleRegisterClick={this.handleRegisterClick} show_info={this.state.user.employee_status}/>
+                            handleRegisterClick={this.handleRegisterClick} show_info={this.state.user.employee_status}
+                            store_id={this.state.store_id} shift_info={this.state.shift} />
                     <Sidebar sidebarToggled={sidebarToggled} name={this.state.user.name} email={this.state.user.email}/>
                     <SignIn onRouteChange={this.onRouteChange} loadUser={this.loadUser} loginToggled={loginToggled} />
                     <Register onRouteChange={this.onRouteChange}  loadUser={this.loadUser} registerToggled={registerToggled} style={{display:'inline-block'}}/>
@@ -99,5 +142,5 @@ class App extends Component {
         );
     };
 }
-
+//
 export default App;

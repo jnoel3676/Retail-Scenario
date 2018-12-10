@@ -1,11 +1,12 @@
 import React, { Fragment } from 'react';
 import './header.css';
 
-const EmployeeInfo = ({show_info, store_id}) => {
+const EmployeeInfo = ({shift_info, store_id, show_info}) => {
     if (show_info) {
         return (
             <div className="extra-info">
                 <span>Store ID: {store_id}</span>
+                <span>Shift: {shift_info}</span>
             </div>
         );
     } else {
@@ -15,12 +16,11 @@ const EmployeeInfo = ({show_info, store_id}) => {
     }
 };
 
-const Header = ({isSignedIn, handleLogInClick, handleRegisterClick, handleSidebarClick, show_info}) => {
+const Header = ({isSignedIn, handleLogInClick, handleRegisterClick, handleSidebarClick, show_info, shift_info, store_id}) => {
     if(isSignedIn === false) {
         return(
             <Fragment>
             <div className="heading-box">
-                <EmployeeInfo show_info={show_info}/>
             <div className="left-hand">
                <button className="sidebar-button" onClick={handleSidebarClick}>=</button> 
                <h1 style={{fontSize: 40, fontFamily: 'Georgia', display: 'inline-block',
@@ -39,6 +39,7 @@ const Header = ({isSignedIn, handleLogInClick, handleRegisterClick, handleSideba
     } else {
         return(
             <div className="heading-box">
+                <EmployeeInfo show_info={show_info} shift_info={shift_info} store_id={store_id}/>
                 <div className="left-hand">
                     <button className="sidebar-button" onClick={handleSidebarClick}>=</button>
                     <h1 style={{fontSize: 40, fontFamily: 'Georgia', display: 'inline-block',

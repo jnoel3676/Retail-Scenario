@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const bcrypt = require('bcrypt-nodejs')
+const bcrypt = require('bcrypt-nodejs');
 const knex = require('knex');
 
 const db = knex({
@@ -71,16 +71,27 @@ app.post('/register', (req,res) => {
 });
 
 app.get('/catalog', (req,res) => {
-    db.select('*').from('item').then(items => {
+    return db.select('*').from('item').then(items => {
         res.json(items)
     });
 });
 
-app.get('/storerinfo', (req,res) => {
-    const l_name = req.body;
-    db.select('store_id').from('employee').where('l_name', '=', l_name).then(employee => {
-        res.json(employee['store_id'])
+app.post('/store-id', (req,res) => {
+    const l_name = req.body.name;
+    return db.select('store_id').from('employee').where('l_name', '=', l_name).then(employee => {
+        res.json(employee[0])
     })
+
+});
+
+app.post('/shift-info', (req,res) => {
+    const l_name = req.body.name;
+    return db.select('hours').from('shift').where('shift_id', '=',
+        db.select('shift_id').from('employee').where('l_name', '=', l_name))
+        .then(shift => {
+        res.json(shift[0])
+    })
+
 });
 
 
