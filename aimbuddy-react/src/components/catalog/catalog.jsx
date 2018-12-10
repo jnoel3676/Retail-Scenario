@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component, Fragment} from 'react';
 import './catalog.css'
 
 const Item = (props) => {
@@ -12,6 +12,18 @@ const Item = (props) => {
                 Item #: {props.item_id}
                 <br/>
                 Stock: {props.amount_in_stock}
+                <br/>
+                {() => {
+                    if (props.employee_status) {
+                        return (
+                            <Fragment>
+                                Supplier ID: {props.supplier_id}
+                                <br/>
+                                Section ID: {props.section_id}
+                            </Fragment>
+                        )
+                    }
+                }}
             </div>
         </div>
     );
@@ -20,7 +32,7 @@ const Item = (props) => {
 const ItemList = (props) => {
     return (
         <div>
-            {props.items.map(item => <Item {...item}/>)}
+            {props.items.map(item => <Item {...item} employee_status={props.employee_status}/>)}
         </div>
     );
 };
@@ -30,7 +42,7 @@ class Catalog extends Component {
     render() {
         return (
             <React.Fragment>
-                <ItemList items={this.props.items}/>
+                <ItemList items={this.props.items} employee_status={this.props.employee_status}/>
             </React.Fragment>
         );
     }

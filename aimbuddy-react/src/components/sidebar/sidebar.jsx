@@ -5,7 +5,6 @@ const AboutUs = (props) => {
      return (
         <div className="sidebar" style={{width: props.width}}>
             <span>User: {props.name}</span>
-            <br/>
             <span>Email: {props.email}</span>
         </div>
     );
