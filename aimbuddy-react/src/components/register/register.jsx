@@ -52,7 +52,7 @@ class Register extends Component {
 
         return (
             <div className="register-box" style={{width: this.showRegister()}}>
-                <article className="br5 ba dark-gray b--black-10 w-100 w-50-m w-25-l mw6 shadow-5 center" >
+                <article className="br5 ba dark-gray w-100 w-50-m w-25-l mw6 shadow-5 center" >
                     <main className="pa4 black-80">
                         <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
                             <legend className="f4 fw6 ph0 mh0">Register</legend>

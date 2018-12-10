@@ -85,9 +85,9 @@ class App extends Component {
                             handleSidebarClick={this.handleSidebarClick} handleLogInClick={this.handleLogInClick}
                             handleRegisterClick={this.handleRegisterClick} />
                     <Sidebar sidebarToggled={sidebarToggled} />
-                    <Catalog items={items}/>
-                    <SignIn onRouteChange={this.onRouteChange} loadUser={this.loadUser} loginToggled={loginToggled}/>
-                    <Register onRouteChange={this.onRouteChange}  loadUser={this.loadUser} registerToggled={registerToggled} />
+                    <SignIn className="signincomp" onRouteChange={this.onRouteChange} loadUser={this.loadUser} loginToggled={loginToggled} />
+                    <Catalog items={items} style={{display:'inline-block'}}/>
+                    <Register onRouteChange={this.onRouteChange}  loadUser={this.loadUser} registerToggled={registerToggled} style={{display:'inline-block'}}/>
                 </Fragment>
             </UtilContextProvider>
         );

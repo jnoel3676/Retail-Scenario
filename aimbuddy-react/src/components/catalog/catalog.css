@@ -8,3 +8,10 @@ span {
     font-size: 30px;
     font-weight: bold;
 }
+
+.item {
+    display: inline-block;
+    width: 500px;
+    height: 100px;
+    box-sizing: content-box;
+}

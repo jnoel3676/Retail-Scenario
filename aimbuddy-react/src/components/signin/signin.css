@@ -17,8 +17,9 @@ form {
     padding: 0 0 0 0;
     overflow-x: hidden;
     text-align: center;
-    float: right;
-    margin: 0 0 0 0;
+    position: fixed;
+    margin: 100px 0 0 0;
+    right: 0;
     height: 331px;
     background: #eee;
     border-radius: 5px;

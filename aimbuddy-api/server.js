@@ -69,9 +69,10 @@ app.post('/register', (req,res) => {
 		.catch(err => res.status(400).json('Unable to register user'))
 });
 
-app.get('/catalog', (res,req) => {
-    const items = db.select('*').from('item');
-
+app.get('/catalog', (req,res) => {
+    db.select('*').from('item').then(items => {
+        res.json(items)
+    });
 });
 
 
