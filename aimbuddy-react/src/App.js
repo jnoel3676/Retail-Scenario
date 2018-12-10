@@ -92,7 +92,7 @@ class App extends Component {
                     <Sidebar sidebarToggled={sidebarToggled} name={this.state.user.name} email={this.state.user.email}/>
                     <SignIn onRouteChange={this.onRouteChange} loadUser={this.loadUser} loginToggled={loginToggled} />
                     <Register onRouteChange={this.onRouteChange}  loadUser={this.loadUser} registerToggled={registerToggled} style={{display:'inline-block'}}/>
-                    <Catalog items={items} style={{display:'inline-block'}} employee_status={this.state.user.employee_status}/>
+                    <Catalog items={items} style={{display:'inline-block'}} show_item_info={this.state.user.employee_status}/>
                 </Fragment>
             </UtilContextProvider>
         );

@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aimbuddy-react/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/aimbuddy-react/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aimbuddy-react/src/components/catalog/catalog.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/aimbuddy-react/src/components/catalog/catalog.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aimbuddy-react/src/components/sidebar/sidebar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/aimbuddy-react/src/components/sidebar/sidebar.jsx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,11 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="App.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/aimbuddy-react/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="381">
-              <caret line="94" column="124" selection-start-line="94" selection-start-column="124" selection-end-line="94" selection-end-column="124" />
+              <caret line="94" column="96" selection-start-line="94" selection-start-column="96" selection-end-line="94" selection-end-column="96" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
               </folding>
@@ -103,16 +102,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="utilContext.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/aimbuddy-react/src/context/utilContext.js">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="catalog.jsx" pinned="false" current-in-tab="true">
+      <file leaf-file-name="catalog.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/aimbuddy-react/src/components/catalog/catalog.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="25" column="18" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
+            <state relative-caret-position="396">
+              <caret line="52" column="92" selection-start-line="52" selection-start-column="92" selection-end-line="52" selection-end-column="92" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -139,8 +133,8 @@
         <option value="$PROJECT_DIR$/aimbuddy-react/src/components/header/header.jsx" />
         <option value="$PROJECT_DIR$/aimbuddy-react/src/components/signin/signin.jsx" />
         <option value="$PROJECT_DIR$/aimbuddy-react/src/components/sidebar/sidebar.jsx" />
-        <option value="$PROJECT_DIR$/aimbuddy-react/src/App.js" />
         <option value="$PROJECT_DIR$/aimbuddy-react/src/components/catalog/catalog.jsx" />
+        <option value="$PROJECT_DIR$/aimbuddy-react/src/App.js" />
       </list>
     </option>
   </component>
@@ -261,12 +255,12 @@
       <updated>1544311545816</updated>
       <workItem from="1544311547868" duration="6689000" />
       <workItem from="1544390185465" duration="8280000" />
-      <workItem from="1544410483358" duration="2956000" />
+      <workItem from="1544410483358" duration="3851000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17925000" />
+    <option name="totallyTimeSpent" value="18820000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -549,22 +543,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/aimbuddy-react/src/App.js">
+    <entry file="file://$PROJECT_DIR$/aimbuddy-react/src/components/catalog/catalog.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="94" column="124" selection-start-line="94" selection-start-column="124" selection-end-line="94" selection-end-column="124" />
+        <state relative-caret-position="396">
+          <caret line="52" column="92" selection-start-line="52" selection-start-column="92" selection-end-line="52" selection-end-column="92" />
           <folding>
-            <element signature="e#0#51#0" expanded="true" />
+            <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/aimbuddy-react/src/components/catalog/catalog.jsx">
+    <entry file="file://$PROJECT_DIR$/aimbuddy-react/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="25" column="18" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
+        <state relative-caret-position="381">
+          <caret line="94" column="96" selection-start-line="94" selection-start-column="96" selection-end-line="94" selection-end-column="96" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#0#51#0" expanded="true" />
           </folding>
         </state>
       </provider>

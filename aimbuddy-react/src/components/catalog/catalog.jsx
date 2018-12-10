@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react';
 import './catalog.css'
 
 const Item = (props) => {
+
     return (
         <div className="item">
             <div style={{display: 'inline-block', verticalAlign: 'text-bottom', paddingLeft: 20}}>
@@ -13,26 +14,33 @@ const Item = (props) => {
                 <br/>
                 Stock: {props.amount_in_stock}
                 <br/>
-                {() => {
-                    if (props.employee_status) {
-                        return (
-                            <Fragment>
-                                Supplier ID: {props.supplier_id}
-                                <br/>
-                                Section ID: {props.section_id}
-                            </Fragment>
-                        )
-                    }
-                }}
+                <ExtraItemInfo show_item_info={props.show_item_info} supplier_id={props.supplier_id} section_id={props.section_id}/>
             </div>
         </div>
     );
 };
 
+const ExtraItemInfo = (props) => {
+
+    if (props.show_item_info) {
+        return (
+            <Fragment>
+                Supplier ID: {props.supplier_id}
+                <br/>
+                Section ID: {props.section_id}
+            </Fragment>
+        );
+    } else {
+        return (
+            <Fragment></Fragment>
+        );
+    }
+};
+
 const ItemList = (props) => {
     return (
         <div>
-            {props.items.map(item => <Item {...item} employee_status={props.employee_status}/>)}
+            {props.items.map(item => <Item {...item} show_item_info={props.show_item_info}/>)}
         </div>
     );
 };
@@ -42,7 +50,7 @@ class Catalog extends Component {
     render() {
         return (
             <React.Fragment>
-                <ItemList items={this.props.items} employee_status={this.props.employee_status}/>
+                <ItemList items={this.props.items} show_item_info={this.props.show_item_info}/>
             </React.Fragment>
         );
     }
