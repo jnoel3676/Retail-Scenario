@@ -7,11 +7,11 @@ const Item = (props) => {
             <div style={{display: 'inline-block', verticalAlign: 'text-bottom', paddingLeft: 20}}>
                 <span className="item_name">{props.item_name}</span>
                 <span>${props.price}</span>
-                <div style={{fontSize:10}}>
-                    Item #: {props.item_id}
-                    <br/>
-                    Stock: {props.amount_in_stock}
-                </div>
+            </div>
+            <div style={{fontSize:10, display:'inline-block', float: 'right', padding: 20}}>
+                Item #: {props.item_id}
+                <br/>
+                Stock: {props.amount_in_stock}
             </div>
         </div>
     );
