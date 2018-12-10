@@ -71,7 +71,9 @@ class App extends Component {
         if(route === 'signout') {
             this.setState({isSignedIn: false})
         } else if (route === 'home') {
-            this.setState({isSignedIn: true})
+            this.setState({registerToggled: false});
+            this.setState({loginToggled: false});
+            this.setState({isSignedIn: true});
         }
         this.setState({route: route});
     };
@@ -84,10 +86,10 @@ class App extends Component {
                     <Header isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} route={route}
                             handleSidebarClick={this.handleSidebarClick} handleLogInClick={this.handleLogInClick}
                             handleRegisterClick={this.handleRegisterClick} />
-                    <Sidebar sidebarToggled={sidebarToggled} />
-                    <SignIn className="signincomp" onRouteChange={this.onRouteChange} loadUser={this.loadUser} loginToggled={loginToggled} />
-                    <Catalog items={items} style={{display:'inline-block'}}/>
+                    <Sidebar sidebarToggled={sidebarToggled} name={this.state.user.name} />
+                    <SignIn onRouteChange={this.onRouteChange} loadUser={this.loadUser} loginToggled={loginToggled} />
                     <Register onRouteChange={this.onRouteChange}  loadUser={this.loadUser} registerToggled={registerToggled} style={{display:'inline-block'}}/>
+                    <Catalog items={items} style={{display:'inline-block'}}/>
                 </Fragment>
             </UtilContextProvider>
         );

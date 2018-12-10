@@ -23,10 +23,12 @@ const Header = ({isSignedIn, handleLogInClick, handleRegisterClick, handleSideba
         )
     } else {
         return(
-            <div>
-                <button className="sidebar-button" onClick={handleSidebarClick}>=</button>
-                <h1 style={{fontSize: 40, fontFamily: 'Georgia', display: 'inline-block',
+            <div className="heading-box">
+                <div className="left-hand">
+                    <button className="sidebar-button" onClick={handleSidebarClick}>=</button>
+                    <h1 style={{fontSize: 40, fontFamily: 'Georgia', display: 'inline-block',
                         paddingLeft: 10, verticalAlign: 'middle', color: '#f7fdf7'}}>Grocer-mart</h1>
+                </div>
             </div>
         )
     }

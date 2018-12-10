@@ -4,7 +4,7 @@ import './sidebar.css';
 const AboutUs = (props) => {
      return (
         <div className="sidebar" style={{width: props.width}}>
-            <span>Bruce Gutierrez-Munguia</span>
+            <span>{props.name}</span>
             <span>Samuel Naranjo</span>
             <span>Joshua Noel</span>
             <span>Nick Castagno</span>
@@ -27,7 +27,7 @@ class Sidebar extends Component {
     render() {
         return (
             <React.Fragment>
-                <AboutUs width={this.showSidebar()}/>
+                <AboutUs width={this.showSidebar()} name={this.props.name}/>
             </React.Fragment>
         );
     }
