@@ -43,7 +43,8 @@ class App extends Component {
                 name: data.name,
                 email: data.email,
                 entries: data.entries,
-                joined: data.joined
+                joined: data.joined,
+                employee_status: data.employee_status
             }
         })
     };
@@ -88,7 +89,7 @@ class App extends Component {
                 <Fragment>
                     <Header isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} route={route}
                             handleSidebarClick={this.handleSidebarClick} handleLogInClick={this.handleLogInClick}
-                            handleRegisterClick={this.handleRegisterClick} />
+                            handleRegisterClick={this.handleRegisterClick} show_info={this.state.user.employee_status}/>
                     <Sidebar sidebarToggled={sidebarToggled} name={this.state.user.name} email={this.state.user.email}/>
                     <SignIn onRouteChange={this.onRouteChange} loadUser={this.loadUser} loginToggled={loginToggled} />
                     <Register onRouteChange={this.onRouteChange}  loadUser={this.loadUser} registerToggled={registerToggled} style={{display:'inline-block'}}/>

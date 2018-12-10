@@ -76,6 +76,13 @@ app.get('/catalog', (req,res) => {
     });
 });
 
+app.get('/storerinfo', (req,res) => {
+    const l_name = req.body;
+    db.select('store_id').from('employee').where('l_name', '=', l_name).then(employee => {
+        res.json(employee['store_id'])
+    })
+});
+
 
 app.listen(3000, () => {
 	console.log('app is running on port 3000');
