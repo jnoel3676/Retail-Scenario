@@ -37,11 +37,13 @@ class App extends Component {
 
     loadUser = (data) => {
         this.setState({
-            id: data.id,
-            name: data.name,
-            email: data.email,
-            entries: data.entries,
-            joined: data.joined
+            user: {
+                id: data.id,
+                name: data.name,
+                email: data.email,
+                entries: data.entries,
+                joined: data.joined
+            }
         })
     };
 
@@ -86,7 +88,7 @@ class App extends Component {
                     <Header isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} route={route}
                             handleSidebarClick={this.handleSidebarClick} handleLogInClick={this.handleLogInClick}
                             handleRegisterClick={this.handleRegisterClick} />
-                    <Sidebar sidebarToggled={sidebarToggled} name={this.state.user.name} />
+                    <Sidebar sidebarToggled={sidebarToggled} name={this.state.user.name} email={this.state.user.email}/>
                     <SignIn onRouteChange={this.onRouteChange} loadUser={this.loadUser} loginToggled={loginToggled} />
                     <Register onRouteChange={this.onRouteChange}  loadUser={this.loadUser} registerToggled={registerToggled} style={{display:'inline-block'}}/>
                     <Catalog items={items} style={{display:'inline-block'}}/>

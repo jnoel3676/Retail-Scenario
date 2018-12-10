@@ -50,6 +50,7 @@ class SignIn extends Component {
                     if(response.ok) {
                         if(user.id) {
                             utilContext.setCurrentUser(user);
+                            this.props.loadUser(user);
                             this.props.onRouteChange('home');
                         }
                     } else {

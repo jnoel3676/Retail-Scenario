@@ -4,10 +4,9 @@ import './sidebar.css';
 const AboutUs = (props) => {
      return (
         <div className="sidebar" style={{width: props.width}}>
-            <span>{props.name}</span>
-            <span>Samuel Naranjo</span>
-            <span>Joshua Noel</span>
-            <span>Nick Castagno</span>
+            <span>User: {props.name}</span>
+            <br/>
+            <span>Email: {props.email}</span>
         </div>
     );
 };
@@ -21,13 +20,13 @@ class Sidebar extends Component {
     }
 
     showSidebar() {
-        return (this.props.sidebarToggled ? 250 : 0);
+        return (this.props.sidebarToggled ? 300 : 0);
     }
 
     render() {
         return (
             <React.Fragment>
-                <AboutUs width={this.showSidebar()} name={this.props.name}/>
+                <AboutUs width={this.showSidebar()} name={this.props.name} email={this.props.email}/>
             </React.Fragment>
         );
     }
