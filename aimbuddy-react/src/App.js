@@ -27,6 +27,8 @@ class App extends Component {
             joined: '',
             employee_status: false
         },
+        tempSectionID: '',
+        tempSupplierID: '',
         shift: '',
         store_id: ''
     };
@@ -64,6 +66,57 @@ class App extends Component {
             .then(data => this.setState({ items: data }));
     };
 
+    /*
+
+    getSupplierID = (supplier_name) => {
+        const query = 'supplier-id';
+        if (this.state.isSignedIn && this.state.user.employee_status) {
+            return fetch(API + query, {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    supplier_name: supplier_name
+                })
+            })
+                .then(response => response.json())
+                .then(data =>  this.setState({ tempSupplierID: data.supplier_id}))
+        }
+    };
+
+    getSectionID = (section_name) => {
+        const query = 'section-id';
+        if (this.state.isSignedIn && this.state.user.employee_status) {
+            fetch(API + query, {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    section_name: section_name
+                })
+            })
+                .then(response => response.json())
+                .then(data => this.setState({ tempSectionID: data.section_id}))
+        }
+    };
+
+    */
+
+    addItem = ( item_name, price, stock, section_name, supplier_name ) => {
+        const query = 'new-item';
+        if (this.state.isSignedIn && this.state.user.employee_status) {
+            fetch(API + query, {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    item_name: item_name,
+                    price: price,
+                    stock: stock,
+                    section_name: section_name,
+                    supplier_name: supplier_name
+                })
+            }).then()
+        }
+    };
+
     getStoreID = () => {
         const name_array = this.state.user.name.split(' ');
         const query = 'store-id';
@@ -77,7 +130,6 @@ class App extends Component {
             })
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data);
                     this.setState({ store_id: data.store_id })
                 })
         }

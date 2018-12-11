@@ -70,11 +70,47 @@ app.post('/register', (req,res) => {
 		.catch(err => res.status(400).json('Unable to register user'))
 });
 
+app.post('/new-item', (req,res) => {
+    const { item_name, price, stock, supplier_name, section_name } = req.body;
+    db.select('supplier_id').from('supplier').where('supplier_name', '=', supplier_name).then(supplier => {
+        db.select('section_id').from('section').where('section_name', '=', section_name).then(section => {
+            db.insert({
+                item_name: item_name,
+                price: price,
+                amount_in_stock: stock,
+                supplier_id: supplier[0].supplier_id,
+                section_id: section[0].section_id
+            }).into('item').finally()
+        })
+        }
+    )
+});
+
 app.get('/catalog', (req,res) => {
     return db.select('*').from('item').then(items => {
         res.json(items)
     });
 });
+
+/*
+
+app.post('/supplier-id', (req,res) => {
+    const supplier_name = req.body.supplier_name;
+    return db.select('supplier_id').from('supplier').where('supplier_name', '=', supplier_name).then(supplier => {
+        res.json(supplier[0])
+    })
+
+});
+
+app.post('/section-id', (req,res) => {
+    const section_name = req.body.section_name;
+    return db.select('section_id').from('section').where('section_name', '=', section_name).then(section => {
+        res.json(section[0])
+    })
+
+});
+
+*/
 
 app.post('/store-id', (req,res) => {
     const l_name = req.body.name;
