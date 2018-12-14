@@ -69,24 +69,6 @@ class App extends Component {
             .then(data => this.setState({ items: data }));
     };
 
-    addItem = ( item_name, price, stock, section_name, supplier_name ) => {
-        const query = 'new-item';
-        console.log(item_name);
-        if (this.state.isSignedIn && this.state.user.employee_status) {
-            fetch(API + query, {
-                method: 'post',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    item_name: item_name,
-                    price: price,
-                    stock: stock,
-                    section_name: section_name,
-                    supplier_name: supplier_name
-                })
-            }).then()
-        }
-    };
-
     getStoreID = () => {
         const name_array = this.state.user.name.split(' ');
         const query = 'store-id';
@@ -104,10 +86,6 @@ class App extends Component {
                 })
         }
     };
-
-    testFunc() {
-        console.log("this is running")
-    }
 
     getShift = () => {
         const name_array = this.state.user.name.split(' ');
@@ -164,10 +142,9 @@ class App extends Component {
                             handleRegisterClick={this.handleRegisterClick} show_info={this.state.user.employee_status}
                             store_id={this.state.store_id} shift_info={this.state.shift} handleAddItemClick={this.handleAddItemClick}/>
                     <Sidebar sidebarToggled={sidebarToggled} name={this.state.user.name} email={this.state.user.email}/>
-                    <AddItem addItemFormToggled={this.state.addItemFormToggled} isEmployee={this.state.employee_status} addItem={this.testFunc}/>
+                    <AddItem addItemFormToggled={this.state.addItemFormToggled} getAllItems={this.getAllItems}/>
                     <SignIn onRouteChange={this.onRouteChange} loadUser={this.loadUser} loginToggled={loginToggled} />
                     <Register onRouteChange={this.onRouteChange}  loadUser={this.loadUser} registerToggled={registerToggled} style={{display:'inline-block'}}/>
-
                     <Catalog items={items} style={{display:'inline-block'}} show_item_info={this.state.user.employee_status}/>
                 </Fragment>
             </UtilContextProvider>

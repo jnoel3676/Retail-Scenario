@@ -80,7 +80,7 @@ app.post('/new-item', (req,res) => {
                 amount_in_stock: stock,
                 supplier_id: supplier[0].supplier_id,
                 section_id: section[0].section_id
-            }).into('item').finally()
+            }).into('item').then(success => res.json(success)).finally()
         })
         }
     )

@@ -15,6 +15,23 @@ class AddItem extends Component {
         this.showForm = this.showForm.bind(this);
     }
 
+    addItem = (e) => {
+        e.preventDefault();
+        fetch("http://localhost:3000/new-item", {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                item_name: this.state.name,
+                price: this.state.price,
+                stock: this.state.stock,
+                section_name: this.state.section,
+                supplier_name: this.state.supplier
+            })
+        }).then(res => res.json());
+        this.props.getAllItems();
+        return false;
+    };
+
     showForm() {
         return (this.props.addItemFormToggled ? 'block' : 'none');
     }
@@ -37,7 +54,7 @@ class AddItem extends Component {
                     <input type="text" placeholder="Enter section name" name="section" onChange={evt5=>this.setState({section: evt5.target.value})} required/>
 
                     <button className="submit"
-                            onClick={this.props.testFunc}>Submit</button>
+                            onClick={this.addItem.bind(this)}>Submit</button>
                 </form>
             </div>
         )
