@@ -9,7 +9,7 @@ body {
 .extra-info {
     color: aliceblue;
     float: right;
-    margin: 20px 20px 0 0;
+    margin: 10px 20px 0 0;
 }
 
 .left-hand {
@@ -55,6 +55,19 @@ body {
     color: aliceblue;
     cursor: pointer;
     transition-duration: 0.2s;
+}
+
+.heading-box .add-item {
+    background-color: transparent;
+    font-size: 20px;
+    border: none;
+    color: aliceblue;
+    cursor: pointer;
+    transition-duration: 0.2s;
+}
+
+.heading-box .add-item:hover {
+    color: grey;
 }
 
 .buttons .register {

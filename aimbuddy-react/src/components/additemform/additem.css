@@ -1,0 +1,22 @@
+.form-container {
+    border: 1px solid grey;
+    width: 250px;
+    height: 435px;
+    padding: 10px;
+    background-color: white;
+}
+
+.form-popup {
+    transition-duration: 0.4s;
+}
+
+.form-container .submit {
+    background-color: #184055;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-top:10px;
+    opacity: 0.8;
+}

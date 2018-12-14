@@ -92,26 +92,6 @@ app.get('/catalog', (req,res) => {
     });
 });
 
-/*
-
-app.post('/supplier-id', (req,res) => {
-    const supplier_name = req.body.supplier_name;
-    return db.select('supplier_id').from('supplier').where('supplier_name', '=', supplier_name).then(supplier => {
-        res.json(supplier[0])
-    })
-
-});
-
-app.post('/section-id', (req,res) => {
-    const section_name = req.body.section_name;
-    return db.select('section_id').from('section').where('section_name', '=', section_name).then(section => {
-        res.json(section[0])
-    })
-
-});
-
-*/
-
 app.post('/store-id', (req,res) => {
     const l_name = req.body.name;
     return db.select('store_id').from('employee').where('l_name', '=', l_name).then(employee => {

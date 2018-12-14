@@ -6,6 +6,7 @@ import Catalog from './components/catalog/catalog';
 import Sidebar from './components/sidebar/sidebar';
 import { UtilContextProvider } from './context/utilContext';
 import './App.css';
+import AddItem from "./components/additemform/additem";
 
 const API = 'http://localhost:3000/';
 
@@ -18,6 +19,7 @@ class App extends Component {
         sidebarToggled: false,
         loginToggled: false,
         registerToggled: false,
+        addItemFormToggled: false,
         items: [],
         user: {
             id: '',
@@ -38,6 +40,7 @@ class App extends Component {
         this.handleSidebarClick = this.handleSidebarClick.bind(this);
         this.handleLogInClick = this.handleLogInClick.bind(this);
         this.handleRegisterClick = this.handleRegisterClick.bind(this);
+        this.handleAddItemClick = this.handleAddItemClick.bind(this);
     }
 
     loadUser = (data) => {
@@ -66,42 +69,9 @@ class App extends Component {
             .then(data => this.setState({ items: data }));
     };
 
-    /*
-
-    getSupplierID = (supplier_name) => {
-        const query = 'supplier-id';
-        if (this.state.isSignedIn && this.state.user.employee_status) {
-            return fetch(API + query, {
-                method: 'post',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    supplier_name: supplier_name
-                })
-            })
-                .then(response => response.json())
-                .then(data =>  this.setState({ tempSupplierID: data.supplier_id}))
-        }
-    };
-
-    getSectionID = (section_name) => {
-        const query = 'section-id';
-        if (this.state.isSignedIn && this.state.user.employee_status) {
-            fetch(API + query, {
-                method: 'post',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    section_name: section_name
-                })
-            })
-                .then(response => response.json())
-                .then(data => this.setState({ tempSectionID: data.section_id}))
-        }
-    };
-
-    */
-
     addItem = ( item_name, price, stock, section_name, supplier_name ) => {
         const query = 'new-item';
+        console.log(item_name);
         if (this.state.isSignedIn && this.state.user.employee_status) {
             fetch(API + query, {
                 method: 'post',
@@ -135,6 +105,10 @@ class App extends Component {
         }
     };
 
+    testFunc() {
+        console.log("this is running")
+    }
+
     getShift = () => {
         const name_array = this.state.user.name.split(' ');
         const query = 'shift-info';
@@ -165,6 +139,10 @@ class App extends Component {
         this.setState({registerToggled: !this.state.registerToggled});
     };
 
+    handleAddItemClick() {
+        this.setState({addItemFormToggled: !this.state.addItemFormToggled});
+    };
+
     onRouteChange = (route) => {
         if(route === 'signout') {
             this.setState({isSignedIn: false})
@@ -184,10 +162,12 @@ class App extends Component {
                     <Header isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} route={route}
                             handleSidebarClick={this.handleSidebarClick} handleLogInClick={this.handleLogInClick}
                             handleRegisterClick={this.handleRegisterClick} show_info={this.state.user.employee_status}
-                            store_id={this.state.store_id} shift_info={this.state.shift} />
+                            store_id={this.state.store_id} shift_info={this.state.shift} handleAddItemClick={this.handleAddItemClick}/>
                     <Sidebar sidebarToggled={sidebarToggled} name={this.state.user.name} email={this.state.user.email}/>
+                    <AddItem addItemFormToggled={this.state.addItemFormToggled} isEmployee={this.state.employee_status} addItem={this.testFunc}/>
                     <SignIn onRouteChange={this.onRouteChange} loadUser={this.loadUser} loginToggled={loginToggled} />
                     <Register onRouteChange={this.onRouteChange}  loadUser={this.loadUser} registerToggled={registerToggled} style={{display:'inline-block'}}/>
+
                     <Catalog items={items} style={{display:'inline-block'}} show_item_info={this.state.user.employee_status}/>
                 </Fragment>
             </UtilContextProvider>
